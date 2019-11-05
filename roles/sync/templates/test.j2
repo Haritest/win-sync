@@ -1,0 +1,26 @@
+import datetime
+from jinja2 import Template
+
+hello={{ test | b64decode }}
+
+
+date:{{ date | to_nice_json }}
+
+{{ '%Y-%m-%d' | strftime }}
+{{ '52:54:00' | hash('sha1') }}
+
+# Display hour:min:sec
+{{ '%H:%M:%S' | strftime }}
+
+# Use ansible_date_time.epoch fact
+{{ '%Y-%m-%d %H:%M:%S' | strftime(ansible_date_time.epoch) }}
+
+
+{# This is an Ansible template comment. This won’t be shown in the output file  #}
+
+
+Ansible template for loop example
+{% for i in range(3)%}
+  This is the {{ i }}th variable
+{% endfor %}
+
